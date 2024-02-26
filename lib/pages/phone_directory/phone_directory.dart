@@ -175,32 +175,40 @@ class PhoneDirectory extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment
-              .center, // aggiungo l'allineamento centrale per i figli della colonna
-          children: [
-            // usiamo children perche verranno aggiunti numerosi campi
-            ...contacts.map((contact) => // uso lo spread operartor pre crearmi l'array di figli della mia colonna
-                  ListTile(
-                    focusColor: Theme.of(context).colorScheme.onPrimary,
-                    titleTextStyle: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).colorScheme.primary),
-                    onTap: () => context.go('/users/id', extra: contact), // extra permette di iniettare il contatto corrente nella pagina successiva
-                    leading: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Image(
-                        image: NetworkImage(
-                          'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
-                        ),
+        child: Center(
+          child: Column(
+            children: [
+              // usiamo children perche verranno aggiunti numerosi campi
+              ...contacts.map(
+                (contact) => // uso lo spread operartor pre crearmi l'array di figli della mia colonna
+                    ListTile(
+                  focusColor: Theme.of(context).colorScheme.onPrimary,
+                  titleTextStyle: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Theme.of(context).colorScheme.primary),
+                  onTap: () => context.go('/users/id',
+                      extra:
+                          contact), // extra permette di iniettare il contatto corrente nella pagina successiva
+                  leading: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Image(
+                      image: NetworkImage(
+                        'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
                       ),
                     ),
-                    title: Text(contact.name),
                   ),
-                )
-          ],
+                  title: Text(contact.name),
+                ),
+              )
+            ],
+          ),
         ),
+      ),
+      floatingActionButton: const FloatingActionButton(
+        tooltip: 'Add', // used by assistive technologies
+        onPressed: null,
+        child: Icon(Icons.add),
       ),
     );
   }
