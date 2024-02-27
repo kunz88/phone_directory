@@ -155,7 +155,7 @@ class PhoneDirectory extends StatelessWidget {
     );
     if (contacts.isEmpty) {
       //condizione di collection vuota
-      return Center(
+      return const Center(
         child: Text('No contacts yet.'),
       );
     }
@@ -190,14 +190,12 @@ class PhoneDirectory extends StatelessWidget {
                   onTap: () => context.go('/users/id',
                       extra:
                           contact), // extra permette di iniettare il contatto corrente nella pagina successiva
-                  leading: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Image(
-                      image: NetworkImage(
-                        'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
-                      ),
-                    ),
-                  ),
+                  leading: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CircleAvatar(
+                        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                        child: Text(contact.name.characters.first.toUpperCase()),
+                      )),
                   title: Text(contact.name),
                 ),
               )

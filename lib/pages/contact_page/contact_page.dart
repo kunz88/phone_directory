@@ -36,20 +36,17 @@ class CardContact extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(children: [
-        Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: GestureDetector( // gestur detector permette di controllare una determinata azione
-            onTap: () { // al tocco
-              Navigator.push(context, MaterialPageRoute(builder: (context) { // al tocco posiziono una pagina nell'array di pagine con push
-                return const DetailScreen(); // renderizzo la pagina sopra quella precedente
-              }));
-            },
-            child: const Hero(
-              tag: 'contact image',
-              child: Image(
-                image: NetworkImage(
-                  'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
-                ),
+        GestureDetector( // gestur detector permette di controllare una determinata azione
+          onTap: () { // al tocco
+            Navigator.push(context, MaterialPageRoute(builder: (context) { // al tocco posiziono una pagina nell'array di pagine con push
+              return const DetailScreen(); // renderizzo la pagina sopra quella precedente
+            }));
+          },
+          child: const Hero(
+            tag: 'contact image',
+            child: Image(
+              image: NetworkImage(
+                'https://i.pinimg.com/736x/4c/30/b9/4c30b9de7fe46ffb20d4ee4229509541.jpg',
               ),
             ),
           ),
@@ -97,6 +94,7 @@ class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
 
   @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       body: GestureDetector(
@@ -107,7 +105,7 @@ class DetailScreen extends StatelessWidget {
           child: Hero(
             tag: 'contact image',
             child: Image.network(
-              'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png',
+              'https://i.pinimg.com/736x/4c/30/b9/4c30b9de7fe46ffb20d4ee4229509541.jpg',
             ),
           ),
         ),
