@@ -16,8 +16,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    // Per instanziare il Cubit e renderlo accessibile al
+    // sottostante Widget Tree -->BlocProvider
     return BlocProvider(
-      create: (context) => ContactsCubit(),
+      create: (context) => ContactsCubit(), // INIZIALIZZO LO STATO POPOLANDO LA LISTA DI CONTATTI
       child: MaterialApp.router(
         // costruttore router indispensabile per utilizzare go route
         routerConfig: GoRouter(

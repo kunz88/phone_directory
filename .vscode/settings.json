@@ -51,4 +51,5 @@
         "**/*.freezed.dart": true,
         "**/*.g.dart": true
     },
+    "cmake.configureOnOpen": false,
 }

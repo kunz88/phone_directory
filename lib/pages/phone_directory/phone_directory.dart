@@ -9,10 +9,14 @@ class PhoneDirectory extends StatelessWidget {
   const PhoneDirectory({super.key});
   @override
   Widget build(BuildContext context) {
+    // Per accedere al Cubit e rimanere in ascolto di eventuali
+    // cambi di stato
     final contacts = context.watch<ContactsCubit>().state.contacts;
+
     final ButtonStyle style = TextButton.styleFrom(
       foregroundColor: Theme.of(context).colorScheme.onPrimary,
     );
+
     if (contacts.isEmpty) {
       //condizione di collection vuota
       return Center(
@@ -22,6 +26,7 @@ class PhoneDirectory extends StatelessWidget {
       );
     }
     return Scaffold(
+      // --> NAVIGATOR APP
       appBar: AppBar(
         title: Text(
           'Contatti',
@@ -31,11 +36,14 @@ class PhoneDirectory extends StatelessWidget {
         actions: <Widget>[
           TextButton(
             style: style,
-            onPressed: () {},
-            child: const Text('Ordina'),
+            onPressed: () => context.read<ContactsCubit>().sortContact(),
+            child: const Text('Sort'),
           ),
         ],
       ),
+
+      // --> BODY
+
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -51,6 +59,7 @@ class PhoneDirectory extends StatelessWidget {
           ),
         ),
       ),
+      // --> FLOATING BOTTON
       floatingActionButton: const FloatingActionButton(
         tooltip: 'Add', // used by assistive technologies
         onPressed: null,

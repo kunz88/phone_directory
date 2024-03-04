@@ -173,4 +173,11 @@ class ContactsCubit extends Cubit<ContactsState> {
     emit(state.copyWith(
         contacts: state.contacts.where((e) => e.id != contactId).toList()));
   }
+
+  // UTILIZZO QUESTA FUNZIONE PER ORDINARE LA LISTA DI CONTATTI
+  void sortContact() {
+    contacts.sort((a, b) => a.name.compareTo(b.name));
+    contacts.reversed;
+    emit(state.copyWith(contacts: contacts));
+  }
 }
