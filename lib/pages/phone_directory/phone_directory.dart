@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pages_project/cubits/contacts_cubit/contacts_cubit.dart';
+import 'package:pages_project/pages/phone_directory/contacts_cubit/contacts_cubit.dart';
+
 import 'package:pages_project/pages/phone_directory/widget/contact_item.dart';
 
 class PhoneDirectory extends StatelessWidget {

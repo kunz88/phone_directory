@@ -29,7 +29,7 @@ class CardContact extends StatelessWidget {
         ),
         DataRecordCard(
           trailing: Icons.add_home_rounded,
-          title: contact.address,
+          title: contact.address.street,
           subtitle: "Address",
         ),
         DataRecordCard(

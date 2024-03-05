@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pages_project/cubits/contacts_cubit/contacts_cubit.dart';
+import 'package:pages_project/pages/contact_page/contact_cubit/contact_cubit.dart';
+
 import 'package:pages_project/pages/contact_page/contact_page.dart';
+import 'package:pages_project/pages/phone_directory/contacts_cubit/contacts_cubit.dart';
 
 import 'pages/phone_directory/phone_directory.dart';
 
@@ -16,12 +18,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     // Per instanziare il Cubit e renderlo accessibile al
     // sottostante Widget Tree -->BlocProvider
     return BlocProvider(
-      create: (context) => ContactsCubit(), // INIZIALIZZO LO STATO POPOLANDO LA LISTA DI CONTATTI
+      create: (context) =>
+          ContactsCubit(), // INIZIALIZZO LO STATO POPOLANDO LA LISTA DI CONTATTI
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         // costruttore router indispensabile per utilizzare go route
         routerConfig: GoRouter(
           // ! router per le la navigazione tra le pagine
@@ -35,8 +38,10 @@ class MyApp extends StatelessWidget {
                   GoRoute(
                     // seconda route innestata nella prima
                     path: ':id',
-                    builder: (context, state) => ContactPage(
-                      contactId: int.parse(state.pathParameters['id']!),
+                    builder: (context, state) => BlocProvider(
+                      create: (context) => ContactCubit()..getContactById(int.parse(state.pathParameters['id']!)),
+                      child: ContactPage(
+                      ),
                     ),
                   ),
                 ]),
